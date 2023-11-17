@@ -1,0 +1,151 @@
+<header>
+    <button id="open-burger-menu">
+        <svg width="100px" height="100px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 18L20 18" stroke="#000000" stroke-width="2.4" stroke-linecap="round"></path> <path d="M4 12L20 12" stroke="#000000" stroke-width="2.4" stroke-linecap="round"></path> <path d="M4 6L20 6" stroke="#000000" stroke-width="2.4" stroke-linecap="round"></path> </g></svg>
+    </button>
+
+    <span id="logo">
+        Maximiliano Kazanski
+    </span>
+
+    <nav id="nav" class="">
+        <button id="close-burger-menu">
+            <svg width="100px" height="100px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="2.04"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20.7457 3.32851C20.3552 2.93798 19.722 2.93798 19.3315 3.32851L12.0371 10.6229L4.74275 3.32851C4.35223 2.93798 3.71906 2.93798 3.32854 3.32851C2.93801 3.71903 2.93801 4.3522 3.32854 4.74272L10.6229 12.0371L3.32856 19.3314C2.93803 19.722 2.93803 20.3551 3.32856 20.7457C3.71908 21.1362 4.35225 21.1362 4.74277 20.7457L12.0371 13.4513L19.3315 20.7457C19.722 21.1362 20.3552 21.1362 20.7457 20.7457C21.1362 20.3551 21.1362 19.722 20.7457 19.3315L13.4513 12.0371L20.7457 4.74272C21.1362 4.3522 21.1362 3.71903 20.7457 3.32851Z" fill="#0F0F0F"></path> </g></svg>
+        </button>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="#projects" class="section-button">Projects</a>
+            <a href="#skills" class="section-button">Skills</a>
+        </div>
+    </nav>
+</header>
+
+<style>
+    header {
+        display: grid;
+        grid-template-columns: 15% 70% 15%;
+    
+        background-color: #494E6E;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+        padding: 30px 0;
+    }
+
+    #logo {
+        grid-column: 2;
+        justify-self: center;
+
+        font-size: 1.4em;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 600;
+        align-self: center;
+
+        color: #EFE9F4;
+
+        text-transform: uppercase;
+    }
+
+    nav {
+        opacity: 0;
+        visibility: hidden;
+
+        grid-column: 1;
+        display: grid;
+        grid-template: 40px / auto;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #494E6E;
+
+        width: 60%;
+    
+        box-shadow: 0 0 0 100vmax rgba(97, 97, 97, 0.5);
+
+        button {
+            background-color: #EFE9F4;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+
+            padding: 20px 0 0 20px;
+
+            a {
+                margin: 4px;
+    
+                font-family: 'DM Sans', sans-serif;
+                font-weight: 600;
+                font-size: 20px;
+    
+                color: #EFE9F4;
+    
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+        }
+
+    }
+
+    #close-burger-menu {
+        justify-self: right;
+        align-self: center;
+
+        margin: 5px;
+    }
+
+    .--visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        
+        height: 30px;
+        width: 30px;
+
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        svg {
+            height: auto;
+            width: 100%;
+        }
+    }
+
+    #open-burger-menu {
+        justify-self: center;
+        
+        height: 40px;
+        width: 40px;
+    }
+
+</style>
+
+<script>
+    const openButton = document.getElementById('open-burger-menu')
+    const closeButton = document.getElementById('close-burger-menu')
+    const nav = document.getElementById('nav')
+    const sectionButtons = document.querySelectorAll('.section-button')
+
+    openButton.addEventListener('click', () => {
+        nav.classList.add('--visible')
+    })
+
+    closeButton.addEventListener('click', () => {
+        nav.classList.remove('--visible')
+    })
+
+    sectionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            nav.classList.remove('--visible')
+        })
+    })
+</script>

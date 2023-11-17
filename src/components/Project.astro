@@ -1,0 +1,91 @@
+---
+import { type Project } from '../interfaces'
+import { parseDate } from '../utils'
+const { title, startDate, endDate, imageURL, projectURL, index } = Astro.props as Project
+---
+
+<article>
+    <img src={imageURL} loading={index < 3 ? "lazy" : "eager"}>
+    
+    <section>
+        <h3>{title}</h3>
+        
+        <p class="dates">{parseDate(startDate)} - {parseDate(endDate)}</p>
+        <a href={projectURL} target="_blank">
+            <svg width="100px" height="100px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>open-external</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="icon" fill="#000000" transform="translate(85.333333, 64.000000)"> <path d="M128,63.999444 L128,106.666444 L42.6666667,106.666667 L42.6666667,320 L256,320 L256,234.666444 L298.666,234.666444 L298.666667,362.666667 L4.26325641e-14,362.666667 L4.26325641e-14,64 L128,63.999444 Z M362.666667,1.42108547e-14 L362.666667,170.666667 L320,170.666667 L320,72.835 L143.084945,249.751611 L112.915055,219.581722 L289.83,42.666 L192,42.6666667 L192,1.42108547e-14 L362.666667,1.42108547e-14 Z" id="Combined-Shape"> </path> </g> </g> </g></svg>
+        </a>
+    </section>
+</article>
+
+<style>
+    article {
+        background-color: #bab9ca;
+
+        width: 100%;
+        max-width: 500px;
+
+        margin: 10px 0;
+
+        border-radius: 7px;
+        overflow: hidden;
+
+        & img {
+            width: 100%;
+            height: 200px;
+            display: block;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        & section {
+            display: grid;
+            grid-template: repeat(2, auto) / auto auto;
+
+            width: 100%;
+
+            & h3 {
+                grid-row: 1;
+                grid-column: 1 / span 2;
+
+                font-family: 'DM Sans', sans-serif;
+                font-size: 1.3em;
+
+                margin: 8px 0 10px 8px;
+            }
+
+            & p {
+                grid-row: 2;
+                grid-column: 1;
+
+                align-self:center;
+
+                font-family: 'Roboto Condensed', sans-serif;
+                letter-spacing: -0.3px;
+
+                margin: 0 0 8px 8px;
+            }
+
+            & a {
+                grid-row: 2;
+                grid-column: 2;
+
+                justify-self: right;
+
+                width: 30px;
+                height: 30px;
+
+                margin: 0 8px 8px 0;
+
+                background: url('../../public/icons/open-external.svg') center center no-repeat;
+                background-size: contain;
+                
+                text-decoration: none;
+
+                svg {
+                    height: auto;
+                    width: 100%;
+                }
+            }
+        }
+    }
+</style>

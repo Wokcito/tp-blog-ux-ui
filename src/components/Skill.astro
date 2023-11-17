@@ -1,0 +1,15 @@
+---
+import { type Skill } from '../interfaces'
+const { name, icon } = Astro.props as Skill
+---
+
+<>
+    <img src={icon} alt={name}>
+    <span>{name}</span>
+</>
+
+<style>
+    img {
+        width: 100%;
+    }
+</style>

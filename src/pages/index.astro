@@ -1,0 +1,78 @@
+---
+import { MainLayout as Layout } from '../layouts'
+import { Project, Skill } from "../components"
+import { projects, skills } from '../data'
+---
+
+<Layout
+    title='Maximiliano Kazanski | Fullstack Developer'
+    description="Maximiliano Kazanski's portfolio, +2 years of experiencia as Fullstack Developer"
+>
+    { /* agregar sección con Full Stack developer */ }
+
+    <section id="projects" class="section">
+        <header class="section__header">
+            <h2 class="section__header__title">My latest projects</h2>
+        </header>
+
+        <div>
+            {
+                projects.slice(0, 3).map(
+                ({ title, imageURL, startDate, endDate, projectURL }, index) => {
+                    return <Project
+                        title={title}
+                        imageURL={imageURL}
+                        startDate={startDate}
+                        endDate={endDate}
+                        projectURL={projectURL}
+                        index={index}
+                    />
+                })
+            }
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <header class="section__header">
+            <h2 class="section__header__title">Skills</h2>
+        </header>
+
+        <div class="section__skill-list">
+            { skills.map(({ name, icon }) => <img src={icon} alt={name} class="skill" />) }
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .section {
+        margin-top: 20px;
+        padding: 10px;
+
+        & .section__header {
+            display: flex;
+            justify-content: center;
+
+            & .section__header__title {
+                font-family: 'DM Sans', sans-serif;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: #292C3D;
+                font-size: 1.2em;
+            }
+        }
+
+        & .section__skill-list {
+            display: grid;
+            grid-template-columns: repeat(4, 23%);
+
+            width: 100%;
+
+            justify-content: center;
+            
+
+            & img {
+                padding: 4px;
+            }
+        }
+    }
+</style>
